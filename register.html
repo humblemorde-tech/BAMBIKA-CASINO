@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create System Identity | Bambika Casino</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+    <div class="auth-viewport-wrapper">
+        <div class="auth-form-shield">
+            
+            <div class="auth-brand-logo">BAMBIKA<span>.</span></div>
+            <div class="auth-view-subtitle">Register localized customer gaming terminal profile</div>
+
+            <div class="auth-error-feedback" id="registrationFailurePanel"></div>
+
+            <form id="registrationRequestForm">
+                <div class="form-group">
+                    <label for="regUsername">Choose Username</label>
+                    <input type="text" id="regUsername" class="form-input" minlength="3" required placeholder="Alpha Character String">
+                </div>
+
+                <div class="form-group">
+                    <label for="regPassword">Secure PasscodePhrase</label>
+                    <input type="password" id="regPassword" class="form-input" minlength="6" required placeholder="Minimum 6 Characters">
+                </div>
+
+                <div class="form-group">
+                    <label for="regPasswordConfirm">Confirm PasscodePhrase</label>
+                    <input type="password" id="regPasswordConfirm" class="form-input" minlength="6" required placeholder="Re-enter verification code">
+                </div>
+
+                <button type="submit" class="auth-submit-action">PROCEED TO ACCOUNT SYSTEM</button>
+            </form>
+
+            <div class="auth-navigation-footer">
+                Already registered? <a href="login.html">Sign In Here</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('registrationRequestForm');
+            const feedbackPanel = document.getElementById('registrationFailurePanel');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                feedbackPanel.style.display = 'none';
+
+                const username = document.getElementById('regUsername').value;
+                const password = document.getElementById('regPassword').value;
+                const confirmPassword = document.getElementById('regPasswordConfirm').value;
+
+                if (password !== confirmPassword) {
+                    feedbackPanel.textContent = "Error: Input confirmation mismatch verification fail.";
+                    feedbackPanel.style.display = 'block';
+                    return;
+                }
+
+                try {
+                    // Register profile via Auth Engine pipelines
+                    const success = await window.AuthEngine.login(username, password);
+                    if (success) {
+                        window.location.href = 'dashboard.html';
+                    }
+                } catch (error) {
+                    feedbackPanel.textContent = error.message || "Onboarding generation terminal failure.";
+                    feedbackPanel.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
