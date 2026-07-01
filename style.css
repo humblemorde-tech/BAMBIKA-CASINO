@@ -1,0 +1,294 @@
+/**
+ * Bambika Casino - Central Core Design System Master Sheet
+ * Path: css/style.css
+ */
+
+/* 1. System Variables & Fluid Design Tokens */
+:root {
+    --bg-main: #0f1115;
+    --bg-surface: #1a1c23;
+    --bg-panel: #15171e;
+    --bg-input: #20242f;
+    
+    --border-color: #2c303b;
+    --border-focus: #37474f;
+
+    --text-primary: #ffffff;
+    --text-secondary: #90a4ae;
+    --text-muted: #607d8b;
+
+    --brand-success: #00e676;
+    --brand-danger: #ff3344;
+    --brand-warning: #ffea00;
+    --brand-accent: #ff003c; /* Aviator Neon Crimson */
+    
+    --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 2. Resets & Foundations */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+/* 3. Global Reusable Layout Panels */
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bambika-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    transition: var(--transition-smooth);
+}
+
+.bambika-card:hover {
+    border-color: var(--border-focus);
+    transform: translateY(-2px);
+}
+
+.badge-game {
+    background: var(--bg-input);
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* 4. Interactive Input Components */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--brand-accent);
+    box-shadow: 0 0 0 2px rgba(255, 0, 60, 0.15);
+}
+
+/* 5. Production Dashboard Viewport Structure */
+.dashboard-viewport {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+.dash-sidebar {
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+}
+
+.brand-header {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.brand-header span {
+    color: var(--brand-accent);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+}
+
+.nav-item.active a, .nav-item a:hover {
+    background: var(--bg-panel);
+    color: var(--text-primary);
+}
+
+.nav-item.active a {
+    border-left: 3px solid var(--brand-accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.dash-main {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-main);
+}
+
+.dash-topbar {
+    height: 80px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.hud-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.hud-wallet-display {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--brand-success);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dash-content-container {
+    padding: 40px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 6. Shared Application Matrices */
+.games-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.game-lobby-card {
+    position: relative;
+    height: 280px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    z-index: 1;
+}
+
+.game-lobby-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(15,17,21,0) 40%, rgba(15,17,21,0.9) 90%);
+    z-index: 2;
+}
+
+.game-card-info {
+    position: relative;
+    z-index: 3;
+}
+
+.game-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+/* 7. Custom Webkit Optimization Utilities */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-focus);
+}
+
+/* 8. Adaptive Breakpoint Responsivity Rules */
+@media (max-width: 992px) {
+    .dashboard-viewport {
+        grid-template-columns: 1fr;
+    }
+    .dash-sidebar {
+        display: none;
+    }
+    .dash-topbar {
+        padding: 0 20px;
+    }
+    .dash-content-container {
+        padding: 20px;
+    }
+      }
+  
