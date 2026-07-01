@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matatu Madness (Crash) | Bambika Casino</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        /* Dedicated Core Layout for Real-Time Canvas Engines */
+        .game-matrix-container {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 24px;
+            align-items: start;
+            margin-top: 20px;
+        }
+        .canvas-viewport-wrapper {
+            position: relative;
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #crashRenderCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .multiplier-floating-hud {
+            position: absolute;
+            font-size: 4rem;
+            font-weight: 900;
+            font-family: monospace;
+            color: var(--brand-accent);
+            text-shadow: 0 0 20px rgba(255, 0, 60, 0.6);
+            pointer-events: none;
+            z-index: 5;
+        }
+        .game-control-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .bet-action-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+        }
+        .btn-prime {
+            background: var(--brand-accent);
+            color: #fff;
+        }
+        .btn-prime:hover {
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
+            transform: translateY(-1px);
+        }
+        .btn-collect {
+            background: var(--brand-success);
+            color: var(--bg-main);
+            display: none;
+        }
+        @media (max-width: 992px) {
+            .game-matrix-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-viewport">
+        <!-- Sidebar Navigation Frame (Adjusted relative linking offsets) -->
+        <aside class="dash-sidebar">
+            <div>
+                <div class="brand-header">BAMBIKA<span>.</span></div>
+                <ul class="nav-menu">
+                    <li class="nav-item active"><a href="../dashboard.html">Lobby</a></li>
+                    <li class="nav-item"><a href="../profile.html">My Profile</a></li>
+                    <li class="nav-item"><a href="../wallet.html">Wallet Ledger</a></li>
+                    <li class="nav-item"><a href="../leaderboard.html">Leaderboards</a></li>
+                    <li class="nav-item"><a href="../settings.html">System Settings</a></li>
+                </ul>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" id="logoutAction" style="color: var(--brand-danger);">Exit Terminal</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Real-Time Simulation Engine Space -->
+        <main class="dash-main">
+            <header class="dash-topbar">
+                <div class="hud-user-profile">
+                    <h3>Matatu Madness: High-Velocity Vector</h3>
+                </div>
+                <div class="hud-wallet-display">
+                    <span>KSh</span>
+                    <span class="global-wallet-balance">0.00</span>
+                </div>
+            </header>
+
+            <div class="dash-content-container">
+                <div class="game-matrix-container">
+                    
+                    <!-- Real-Time Graphic Telemetry Workspace -->
+                    <div class="canvas-viewport-wrapper">
+                        <div class="multiplier-floating-hud" id="liveMultiplierText">1.00x</div>
+                        <canvas id="crashRenderCanvas"></canvas>
+                    </div>
+
+                    <!-- Bet Interceptor & Parameter Form -->
+                    <div class="bambika-card game-control-panel">
+                        <h3 style="font-weight: 700; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">Wager Allocation</h3>
+                        
+                        <div class="form-group">
+                            <label for="wagerInput">Risk Limit Allocation (KSh)</label>
+                            <input type="number" id="wagerInput" class="form-input" min="10" max="10000" value="100" step="10">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="autoCashoutInput">Automated Breakpoint (Multiplier)</label>
+                            <input type="number" id="autoCashoutInput" class="form-input" min="1.01" max="100" value="2.00" step="0.1">
+                        </div>
+
+                        <button class="bet-action-btn btn-prime" id="initWagerBtn">Lock In Wager</button>
+                        <button class="bet-action-btn btn-collect" id="cashoutBtn">TAKE DIVIDENDS</button>
+                        
+                        <p id="gameStatusLabel" style="font-size: 0.85rem; color: var(--text-secondary); text-align: center; margin-top: 8px;">
+                            Awaiting next cycle dispatch loop...
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Core Runtime Integrations -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/wallet.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('crashRenderCanvas');
+            const ctx = canvas.getContext('2d');
+            const multiplierText = document.getElementById('liveMultiplierText');
+            const initBtn = document.getElementById('initWagerBtn');
+            const cashoutBtn = document.getElementById('cashoutBtn');
+            const statusLabel = document.getElementById('gameStatusLabel');
+
+            // Set internal rendering grid resolutions
+            function resizeCanvas() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            // Render a clean structural grid system placeholder inside the canvas
+            function drawGridBackground() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+                ctx.lineWidth = 1;
+                
+                const step = 40;
+                for (let x = 0; x < canvas.width; x += step) {
+                    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+                }
+                for (let y = 0; y < canvas.height; y += step) {
+                    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+                }
+            }
+            drawGridBackground();
+            
+            // Loop State Hooks placeholder
+            initBtn.addEventListener('click', () => {
+                initBtn.style.display = 'none';
+                cashoutBtn.style.display = 'block';
+                statusLabel.textContent = "Vehicle in motion... Accelerating matrix coefficients.";
+                statusLabel.style.color = "var(--brand-success)";
+            });
+
+            cashoutBtn.addEventListener('click', () => {
+                cashoutBtn.style.display = 'none';
+                initBtn.style.display = 'block';
+                statusLabel.textContent = "Wager dividends safely extracted to core wallet profile.";
+                statusLabel.style.color = "var(--text-secondary)";
+            });
+        });
+    </script>
+</body>
+                          </html>
+
