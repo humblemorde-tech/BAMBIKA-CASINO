@@ -1,0 +1,101 @@
+/**
+ * Bambika Casino - Local Ledger & Wallet Visual Styles
+ * Path: css/wallet.css
+ */
+
+/* Grid Arrangement Core Layout */
+.wallet-grid-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.panel-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+/* Operational Button Group Layout */
+.action-row-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.wallet-action-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-deposit {
+    background: var(--brand-success);
+    color: var(--bg-main);
+}
+.btn-deposit:hover {
+    background: #00c853;
+    box-shadow: 0 4px 12px rgba(0, 230, 118, 0.2);
+}
+
+.btn-withdraw {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+.btn-withdraw:hover {
+    border-color: var(--brand-danger);
+    color: var(--brand-danger);
+}
+
+/* Statement Table Auditing UI */
+.ledger-table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.ledger-statement-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.ledger-statement-table th {
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 12px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.ledger-statement-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+.ref-code {
+    font-family: monospace;
+    background: var(--bg-input);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+}
+
+/* Component Responsive Layout Override rules */
+@media (max-width: 992px) {
+    .wallet-grid-matrix {
+        grid-template-columns: 1fr;
+    }
+}
+
