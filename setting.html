@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings | Bambika Casino</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        .settings-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        .settings-alert {
+            display: none;
+            background: rgba(0, 230, 118, 0.1);
+            border-left: 4px solid var(--brand-success);
+            color: var(--brand-success);
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 230, 118, 0.12);
+            color: var(--brand-success);
+            border: 1px solid rgba(0, 230, 118, 0.25);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-viewport">
+        <aside class="dash-sidebar">
+            <div>
+                <div class="brand-header">BAMBIKA<span>.</span></div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="dashboard.html">Lobby</a></li>
+                    <li class="nav-item"><a href="profile.html">My Profile</a></li>
+                    <li class="nav-item"><a href="wallet.html">Wallet Ledger</a></li>
+                    <li class="nav-item"><a href="leaderboard.html">Leaderboards</a></li>
+                    <li class="nav-item active"><a href="settings.html">System Settings</a></li>
+                </ul>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" id="logoutAction" style="color: var(--brand-danger);">Exit Terminal</a></li>
+            </ul>
+        </aside>
+
+        <main class="dash-main">
+            <header class="dash-topbar">
+                <div class="hud-user-profile">
+                    <h3>Terminal Preferences</h3>
+                </div>
+                <div class="hud-wallet-display">
+                    <span>KSh</span>
+                    <span class="global-wallet-balance">0.00</span>
+                </div>
+            </header>
+
+            <div class="dash-content-container">
+                <div class="settings-alert" id="settingsSuccessAlert">
+                    ✔ Account security matrix preferences successfully updated.
+                </div>
+
+                <div class="settings-grid">
+                    <div class="bambika-card">
+                        <h2 class="section-title" style="font-size: 1.3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 20px;">
+                            Identity Credentials
+                        </h2>
+                        <form id="profileSettingsForm">
+                            <div class="form-group">
+                                <label for="settingsUsername">Profile Alias (Username)</label>
+                                <input type="text" id="settingsUsername" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="settingsEmail">Linked System Email</label>
+                                <input type="email" id="settingsEmail" class="form-input" readonly style="opacity: 0.6; cursor: not-allowed;">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="responsibleGamblingLimit">Max Single Wager Threshold restriction (KSh)</label>
+                                <select id="responsibleGamblingLimit" class="form-input" style="appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2390a4ae%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fstyle%3E'); background-repeat: no-repeat; background-position: right 16px top 50%; background-size: 12px auto;">
+                                    <option value="0">No Absolute Limits</option>
+                                    <option value="5000">KSh 5,000 max / bet</option>
+                                    <option value="10000">KSh 10,000 max / bet</option>
+                                    <option value="50000">KSh 50,000 max / bet</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="auth-submit-action" style="max-width: 200px;">SAVE CHANGES</button>
+                        </form>
+                    </div>
+
+                    <div class="bambika-card">
+                        <h2 class="section-title" style="font-size: 1.3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 20px;">
+                            M-Pesa Verification Profile
+                        </h2>
+                        <div class="form-group">
+                            <label>Registered Mobile Gateway String</label>
+                            <input type="text" class="form-input" value="+254 731 070008" readonly style="letter-spacing: 1px; font-family: monospace;">
+                            <div class="verified-badge">✔ Linked &amp; Secured</div>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
+                            This terminal communication routing identification target handles immediate background callback processing for atomic liquidity conversions across the system ledger.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+  </html>
+
