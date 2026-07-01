@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Bambika Casino</title>
+    <!-- Core Application Tokens & Layout Sheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-viewport">
+        <!-- 1. Left Navigation Control Sidebar Deck -->
+        <aside class="dash-sidebar">
+            <div>
+                <div class="brand-header">
+                    BAMBIKA<span>.</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item active"><a href="dashboard.html">Lobby</a></li>
+                    <li class="nav-item"><a href="profile.html">My Profile</a></li>
+                    <li class="nav-item"><a href="wallet.html">Wallet Ledger</a></li>
+                    <li class="nav-item"><a href="leaderboard.html">Leaderboards</a></li>
+                    <li class="nav-item"><a href="settings.html">System Settings</a></li>
+                </ul>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" id="logoutAction" style="color: var(--brand-danger);">Exit Terminal</a></li>
+            </ul>
+        </aside>
+
+        <!-- 2. Main Terminal Content Workspace Area -->
+        <main class="dash-main">
+            <!-- Global Profile HUD Stats Header Bar -->
+            <header class="dash-topbar">
+                <div class="hud-user-profile">
+                    <h3>Welcome back, <span id="dashProfileName" style="color: var(--brand-accent);">Guest</span></h3>
+                </div>
+                <div class="hud-wallet-display">
+                    <span>KSh</span>
+                    <span class="global-wallet-balance" id="activeBalanceHUD">0.00</span>
+                </div>
+            </header>
+
+            <!-- Dynamic System Content Container -->
+            <div class="dash-content-container">
+                
+                <!-- Crash Games Grid Section Matrix -->
+                <section>
+                    <h2 class="section-title">🚀 Fast-Paced Crash Engine Variants</h2>
+                    <div class="games-matrix-grid">
+                        
+                        <div class="game-lobby-card" style="background: linear-gradient(rgba(0,0,0,0.4), var(--bg-surface)), url('assets/images/crash1.jpg') center/cover;">
+                            <div class="game-card-info">
+                                <span class="badge-game">Crash 1</span>
+                                <div class="game-card-title">Matatu Madness</div>
+                                <a href="games/crash1.html" class="form-input flex-center" style="background: var(--brand-accent); border: none; margin-top: 10px; font-weight: 700;">LAUNCH ENGINE</a>
+                            </div>
+                        </div>
+
+                        <div class="game-lobby-card" style="background: linear-gradient(rgba(0,0,0,0.4), var(--bg-surface)), url('assets/images/crash2.jpg') center/cover;">
+                            <div class="game-card-info">
+                                <span class="badge-game">Crash 2</span>
+                                <div class="game-card-title">Shilling Skyrocket</div>
+                                <a href="games/crash2.html" class="form-input flex-center" style="background: var(--bg-panel); margin-top: 10px;">LAUNCH ENGINE</a>
+                            </div>
+                        </div>
+
+                        <div class="game-lobby-card" style="background: linear-gradient(rgba(0,0,0,0.4), var(--bg-surface)), url('assets/images/crash10.jpg') center/cover;">
+                            <div class="game-card-info">
+                                <span class="badge-game">Flagship</span>
+                                <div class="game-card-title">Bambika Max</div>
+                                <a href="games/crash10.html" class="form-input flex-center" style="background: var(--bg-panel); margin-top: 10px;">LAUNCH ENGINE</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Casino Matrix Section -->
+                <section style="margin-top: 40px;">
+                    <h2 class="section-title">🎰 Provably Fair Casino Tables</h2>
+                    <div class="games-matrix-grid">
+
+                        <div class="game-lobby-card" style="background: linear-gradient(rgba(0,0,0,0.4), var(--bg-surface)), url('assets/images/casino1.jpg') center/cover;">
+                            <div class="game-card-info">
+                                <span class="badge-game">Slot Matrix</span>
+                                <div class="game-card-title">Maasai Mara Gold</div>
+                                <a href="games/casino1.html" class="form-input flex-center" style="background: var(--bg-panel); margin-top: 10px;">ENTER LOBBY</a>
+                            </div>
+                        </div>
+
+                        <div class="game-lobby-card" style="background: linear-gradient(rgba(0,0,0,0.4), var(--bg-surface)), url('assets/images/casino2.jpg') center/cover;">
+                            <div class="game-card-info">
+                                <span class="badge-game">Roulette</span>
+                                <div class="game-card-title">Nairobi Nights</div>
+                                <a href="games/casino2.html" class="form-input flex-center" style="background: var(--bg-panel); margin-top: 10px;">ENTER LOBBY</a>
+                            </div>
+                        </div>
+
+                        <div class="game-lobby-card" style="background: linear-gradient(rgba(0,0,0,0.4), var(--bg-surface)), url('assets/images/casino10.jpg') center/cover;">
+                            <div class="game-card-info">
+                                <span class="badge-game">Progressive Jackpot</span>
+                                <div class="game-card-title">Mega Bambika Jackpot</div>
+                                <a href="games/casino10.html" class="form-input flex-center" style="background: var(--bg-panel); margin-top: 10px;">ENTER LOBBY</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Architectural Pipeline Integration Scripts -->
+    <script src="js/auth.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+                          </html>
+                                  
