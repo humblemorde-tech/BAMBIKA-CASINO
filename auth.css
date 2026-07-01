@@ -1,0 +1,95 @@
+/**
+ * Bambika Casino - Gateway Access View Layout
+ * Path: css/auth.css
+ */
+
+.auth-viewport-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-main);
+    padding: 20px;
+}
+
+.auth-form-shield {
+    width: 100%;
+    max-width: 440px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.auth-brand-logo {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.auth-brand-logo span {
+    color: var(--brand-accent);
+}
+
+.auth-view-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+}
+
+/* Gateway Form Button Optimization */
+.auth-submit-action {
+    width: 100%;
+    background: var(--brand-accent);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    margin-top: 10px;
+}
+
+.auth-submit-action:hover {
+    background: #e60036;
+    transform: translateY(-1px);
+}
+
+.auth-submit-action:active {
+    transform: translateY(1px);
+}
+
+.auth-navigation-footer {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.auth-navigation-footer a {
+    color: var(--brand-accent);
+    font-weight: 600;
+}
+
+.auth-navigation-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Validation System Message Interceptors */
+.auth-error-feedback {
+    background: rgba(255, 51, 68, 0.1);
+    border-left: 4px solid var(--brand-danger);
+    color: var(--brand-danger);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    display: none; /* Injected dynamically by logic loops */
+}
+
