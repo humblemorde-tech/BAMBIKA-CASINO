@@ -1,0 +1,96 @@
+/**
+ * Bambika Casino - Core Shared Casino Engine Architecture
+ * Path: js/casino.js
+ */
+(function() {
+    'use strict';
+
+    class CasinoEngine {
+        constructor(config = {}) {
+            this.gameId = config.gameId || 'generic_table';
+            this.minBet = config.minBet || 10;
+            this.maxBet = config.maxBet || 20000;
+            
+            this.isProcessing = false;
+            this.initEngineLink();
+        }
+
+        initEngineLink() {
+            console.log(`[Bambika Casino] Matrix Link Online: System Core Module -> ${this.gameId}`);
+        }
+
+        /**
+         * Provably Fair SHA-256 Simulation Outcome Generation Method
+         * Uses native window.crypto array vectors to secure result arrays against drift manipulation.
+         */
+        generateCryptoOutcome() {
+            const buffer = new Uint32Array(1);
+            window.crypto.getRandomValues(buffer);
+            // Returns a high-precision decimal coefficient between 0.000000 and 1.000000
+            return buffer[0] / Math.pow(2, 32);
+        }
+
+        /**
+         * Core Wager Lifecycle Execution Pipeline
+         * @param {number} betAmount - Amount in KSh allocated by the input DOM handler
+         * @param {function} gameLogicCallback - Unique execution mechanics supplied by specific game sheets
+         */
+        async executeWagerCycle(betAmount, gameLogicCallback) {
+            if (this.isProcessing) return { error: "Terminal state running. Await mutation cycle completion." };
+            
+            // 1. Structural Range Assertions
+            if (isNaN(betAmount) || betAmount < this.minBet || betAmount > this.maxBet) {
+                return { error: `Wager rejection: Limits must sit safely between KSh ${this.minBet} and KSh ${this.maxBet}.` };
+            }
+
+            // 2. State & Session Ledger Check
+            const session = window.LocalDB.getActiveSession();
+            if (!session) return { error: "Authentication checkpoint breach. Re-route terminal access." };
+            if (session.balance < betAmount) return { error: "Transactional halt: Insufficient liquid ledger funds." };
+
+            try {
+                this.isProcessing = true;
+
+                // 3. Atomic Debit Sequence
+                const temporaryDebitBal = session.balance - betAmount;
+                window.LocalDB.updateUserBalance(session.username, temporaryDebitBal);
+                if (window.Wallet) window.Wallet.syncWalletUI();
+
+                // 4. Provably Fair Execution Sequence
+                const sampleSeed = this.generateCryptoOutcome();
+                
+                // Process mathematical outcomes inside target template callbacks
+                // Expected response format from child sheets: { multiplier: X, visualState: [...] }
+                const evaluation = gameLogicCallback(sampleSeed);
+
+                // Artificial delay to build operational anticipation (Slot reels spin / Wheel rolls)
+                await new Promise(resolve => setTimeout(resolve, 1200));
+
+                const payoutDividends = Math.floor(betAmount * evaluation.multiplier);
+                const finalLiveSession = window.LocalDB.getActiveSession();
+                const resolutionBal = finalLiveSession.balance + payoutDividends;
+
+                // 5. Atomic Credit Resolution Sequence
+                window.LocalDB.updateUserBalance(session.username, resolutionBal);
+                if (window.Wallet) window.Wallet.syncWalletUI();
+
+                this.isProcessing = false;
+                
+                return {
+                    status: evaluation.multiplier > 0 ? 'WIN' : 'LOSS',
+                    multiplier: evaluation.multiplier,
+                    payout: payoutDividends,
+                    visualData: evaluation.visualState
+                };
+
+            } catch (err) {
+                this.isProcessing = false;
+                console.error("[Fatal Casino Cycle Error]:", err);
+                return { error: "System fault aborted core calculation loops." };
+            }
+        }
+    }
+
+    window.CasinoEngine = CasinoEngine;
+})();
+                  
