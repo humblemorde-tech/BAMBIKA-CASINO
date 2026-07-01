@@ -1,0 +1,37 @@
+<script src="../js/database.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/wallet.js"></script>
+<script src="../js/casino.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Spin up the shared runtime module
+        const slotMachineInstance = new window.CasinoEngine({
+            gameId: 'maasai_mara_gold_slots',
+            minBet: 20,
+            maxBet: 5000
+        });
+
+        const spinTriggerBtn = document.getElementById('spinBtnElementId');
+
+        spinTriggerBtn.addEventListener('click', async () => {
+            const inputWager = parseFloat(document.getElementById('betAmountInput').value);
+
+            // 2. Route game logic as a clean mathematical callback rule map
+            const outcomes = await slotMachineInstance.executeWagerCycle(inputWager, (seed) => {
+                // Mock simple Slot Multiplier rule based on high-precision cryptoseed ranges
+                if (seed > 0.90) return { multiplier: 5.0, visualState: ['🦁', '🦁', '🦁'] }; // Big Win!
+                if (seed > 0.70) return { multiplier: 1.5, visualState: ['🌳', '🦁', '🌳'] }; // Line Win
+                return { multiplier: 0.0, visualState: ['🦓', '🦅', '🍃'] };                // Loss
+            });
+
+            if (outcomes.error) {
+                alert(outcomes.error);
+                return;
+            }
+
+            // 3. Render results straight onto your custom layout layers
+            console.log(`Round ended as ${outcomes.status}. Multiplier returned: ${outcomes.multiplier}x.`);
+        });
+    });
+                                                                         </script>
+
