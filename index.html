@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bambika Casino | Live Operational Terminal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific Landing Page Formatting Core */
+        .landing-viewport {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #1a1c23 0%, #0f1115 100%);
+            padding: 20px;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .hero-title span {
+            color: var(--brand-accent);
+        }
+        .hero-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .cta-button-group {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 460px;
+        }
+        .cta-btn {
+            flex: 1;
+            padding: 16px 24px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .btn-primary {
+            background: var(--brand-accent);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: #e60036;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 0, 60, 0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+        .btn-secondary:hover {
+            border-color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="landing-viewport">
+        <h1 class="hero-title">BAMBIKA<span>.</span>CASINO</h1>
+        <p class="hero-subtitle">
+            Experience Kenya's ultimate fast-paced crash multipliers and provably fair matrix tables. Secure transactions, immediate tracking.
+        </p>
+
+        <div class="cta-button-group" id="landingActionWrapper">
+            <a href="login.html" class="cta-btn btn-secondary">Access Portal</a>
+            <a href="register.html" class="cta-btn btn-primary">Join Terminal</a>
+        </div>
+    </div>
+
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
+
