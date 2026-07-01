@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Terminal | Bambika Casino</title>
+    <!-- Core Application Design Tokens & Component Styling -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <style>
+        .contact-meta-row {
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .contact-channel {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-family: monospace;
+            color: var(--text-primary);
+        }
+        .success-panel {
+            display: none;
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            color: var(--brand-success);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-viewport-wrapper">
+        <div class="auth-form-shield">
+            
+            <div class="auth-brand-logo">BAMBIKA<span>.</span></div>
+            <div class="auth-view-subtitle">Platform Dispatch &amp; Core Support Desk</div>
+
+            <!-- Ticket Dispatch Success Banner -->
+            <div class="success-panel" id="ticketSuccessMsg">
+                🚀 Ticket transmitted successfully. Response pending in under 10 minutes.
+            </div>
+
+            <form id="supportTicketForm">
+                <div class="form-group">
+                    <label for="contactPhone">Mobile Account Number</label>
+                    <input type="text" id="contactPhone" class="form-input" value="0731070008" placeholder="e.g. 07XXXXXXXX">
+                </div>
+
+                <div class="form-group">
+                    <label for="ticketCategory">Issue Category</label>
+                    <select id="ticketCategory" class="form-input" style="background-color: var(--bg-input); color: var(--text-primary); border: 1px solid var(--border-color);">
+                        <option value="M-Pesa Deposit Delay">M-Pesa Deposit Instability</option>
+                        <option value="Withdrawal Verification">Withdrawal Processing</option>
+                        <option value="Game Rendering Interruption">Game Engine Interruption</option>
+                        <option value="Security Mutation">Profile Security &amp; Access</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ticketMessage">Detailed Context</label>
+                    <textarea id="ticketMessage" class="form-input" rows="4" required placeholder="Describe the transactional or visual issue encountered inside the terminal..." style="resize: none; padding: 12px; font-family: inherit;"></textarea>
+                </div>
+
+                <button type="submit" class="auth-submit-action">DISPATCH HELP TICKET</button>
+            </form>
+
+            <div class="contact-meta-row">
+                <div class="auth-view-subtitle" style="text-align: left; margin-bottom: 12px; font-weight: 700;">Direct Routing Pipelines:</div>
+                <div class="contact-channel">
+                    <span>📞 Support:</span> +254 731 070008
+                </div>
+                <div class="contact-channel">
+                    <span>✉ Dispatch:</span> support@bambikacasino.co.ke
+                </div>
+            </div>
+
+            <div class="auth-navigation-footer" style="margin-top: 20px;">
+                <a href="dashboard.html">Return to Control Lobby</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('supportTicketForm');
+            const successMsg = document.getElementById('ticketSuccessMsg');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Simulate an asynchronous API ticket creation process
+                successMsg.style.display = 'block';
+                form.reset();
+                
+                // Keep the phone context pinned as the primary fallback identifier
+                document.getElementById('contactPhone').value = "0731070008";
+
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 6000);
+            });
+        });
+    </script>
+</body>
+              </html>
+
