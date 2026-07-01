@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Leaderboards | Bambika Casino</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        /* Specific Local Style Extensions for Leaderboard Presentation */
+        .leaderboard-container {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        .leaderboard-table th {
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 16px;
+            border-bottom: 2px solid var(--border-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .leaderboard-table td {
+            padding: 18px 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            vertical-align: middle;
+        }
+        .leaderboard-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .live-flash {
+            background: rgba(255, 0, 60, 0.15);
+            color: var(--brand-accent);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 800;
+            animation: pulse-glow 1.5s infinite ease-in-out;
+            border: 1px solid rgba(255, 0, 60, 0.3);
+        }
+        @keyframes pulse-glow {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-viewport">
+        <aside class="dash-sidebar">
+            <div>
+                <div class="brand-header">BAMBIKA<span>.</span></div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="dashboard.html">Lobby</a></li>
+                    <li class="nav-item"><a href="profile.html">My Profile</a></li>
+                    <li class="nav-item"><a href="wallet.html">Wallet Ledger</a></li>
+                    <li class="nav-item active"><a href="leaderboard.html">Leaderboards</a></li>
+                    <li class="nav-item"><a href="settings.html">System Settings</a></li>
+                </ul>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" id="logoutAction" style="color: var(--brand-danger);">Exit Terminal</a></li>
+            </ul>
+        </aside>
+
+        <main class="dash-main">
+            <header class="dash-topbar">
+                <div class="hud-user-profile">
+                    <h3>Platform Performance Metrics</h3>
+                </div>
+                <div class="hud-wallet-display">
+                    <span>KSh</span>
+                    <span class="global-wallet-balance">0.00</span>
+                </div>
+            </header>
+
+            <div class="dash-content-container">
+                <div class="section-title">
+                    <span>🏆 Global Top Payoffs</span>
+                    <span style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 400;">
+                        Updates instantly matching execution telemetry
+                    </span>
+                </div>
+
+                <div class="leaderboard-container">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank / Status</th>
+                                <th>Account Identifier</th>
+                                <th>Active Core Module</th>
+                                <th>Stake Wagered</th>
+                                <th>Multiplier Cleared</th>
+                                <th>Net Return Dividends</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardRows">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/leaderboard.js"></script>
+</body>
+</html>
+
