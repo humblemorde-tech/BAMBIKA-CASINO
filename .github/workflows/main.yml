@@ -1,0 +1,42 @@
+name: Bambika Platform Core Structure Validation
+
+on:
+  push:
+    branches: [ "main", "staging" ]
+  pull_request:
+    branches: [ "main", "staging" ]
+
+jobs:
+  verify-architecture:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source Code Vector
+      uses: actions/checkout@v4
+
+    - name: Check Essential Subdirectory Presence
+      run: |
+        echo "Verifying structural integrity of directories..."
+        test -d css || (echo "CRITICAL: css directory is missing!" && exit 1)
+        test -d js || (echo "CRITICAL: js directory is missing!" && exit 1)
+        test -d games || (echo "CRITICAL: games directory is missing!" && exit 1)
+
+    - name: Validate Core System Files
+      run: |
+        echo "Verifying presence of vital engine scripts..."
+        test -f index.html || (echo "CRITICAL: index.html missing!" && exit 1)
+        test -f css/style.css || (echo "CRITICAL: css/style.css missing!" && exit 1)
+        test -f js/database.js || (echo "CRITICAL: js/database.js missing!" && exit 1)
+        test -f js/auth.js || (echo "CRITICAL: js/auth.js missing!" && exit 1)
+        test -f js/wallet.js || (echo "CRITICAL: js/wallet.js missing!" && exit 1)
+        echo "Structural integrity checklist passed successfully."
+
+    - name: Client Script Integrity Check
+      run: |
+        echo "Running static verification on core JavaScript syntax rules..."
+        # Utilizes native node execution loops to parse syntax validity quickly without external overhead
+        for file in js/*.js; do
+          node -c "$file" || (echo "Syntax validation failure inside $file" && exit 1)
+        done
+        echo "All core script syntax vectors successfully checked."
+        
